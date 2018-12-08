@@ -14,7 +14,7 @@ public class MovementSphere : MonoBehaviour {
 
 	float startTime;
 
-    float waypointRadius = 0.2f;
+    float waypointRadius = 0.5f;
     bool toP1 = false;
 
     // Use this for initialization
@@ -34,7 +34,7 @@ public class MovementSphere : MonoBehaviour {
 				currentOld = current;
                 current++;
 				startTime = Time.time;
-                if (current >= positions.Length)
+                if (current >= positions.Length-1)
                 {
                     toP1 = true;
                 }
