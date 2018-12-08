@@ -223,8 +223,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 70811184}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.8139043, y: 6.490591, z: 0.4792244}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1308417829}
@@ -242,10 +242,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lineRenderer: {fileID: 70811187}
-  pOrigine: {fileID: 1682973649}
-  p1: {fileID: 702343489}
-  p2: {fileID: 1468484956}
-  pFin: {fileID: 174952062}
+  player1: {fileID: 1682973649}
+  deformP1: {fileID: 702343489}
+  deformP2: {fileID: 1468484956}
+  player2: {fileID: 174952062}
 --- !u!120 &70811187
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -538,7 +538,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -561,7 +561,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 534669902}
   m_LocalRotation: {x: 0.31727532, y: -0.6319307, z: 0.31727532, w: 0.6319307}
-  m_LocalPosition: {x: 4.91, y: 10.06, z: -0.61}
+  m_LocalPosition: {x: 9.06, y: 15.63, z: -0.61}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -576,7 +576,7 @@ GameObject:
   m_Component:
   - component: {fileID: 702343489}
   m_Layer: 0
-  m_Name: P1
+  m_Name: DeformPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -592,8 +592,8 @@ Transform:
   m_LocalPosition: {x: -7, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1308417829}
-  m_RootOrder: 1
+  m_Father: {fileID: 1012050069}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &742624229
 GameObject:
@@ -730,10 +730,68 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7a3c6c2f5d712a439b2c0c08128e226, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Lien: {fileID: 70811187}
-  pOrigine: {fileID: 1682973645}
-  pFin: {fileID: 174952058}
+  link: {fileID: 70811187}
+  player1: {fileID: 1682973645}
+  player2: {fileID: 174952058}
   speed: 5
+--- !u!1 &1012050068
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1012050069}
+  m_Layer: 0
+  m_Name: DeformP1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1012050069
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1012050068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 702343489}
+  m_Father: {fileID: 1308417829}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1251701450
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1251701451}
+  m_Layer: 0
+  m_Name: DeformP2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1251701451
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1251701450}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1468484956}
+  m_Father: {fileID: 1308417829}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1308417828
 GameObject:
   m_ObjectHideFlags: 0
@@ -760,8 +818,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1682973649}
-  - {fileID: 702343489}
-  - {fileID: 1468484956}
+  - {fileID: 1012050069}
+  - {fileID: 1251701451}
   - {fileID: 174952062}
   - {fileID: 70811185}
   - {fileID: 742624234}
@@ -777,7 +835,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1468484956}
   m_Layer: 0
-  m_Name: P2
+  m_Name: DeformPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -793,8 +851,8 @@ Transform:
   m_LocalPosition: {x: 7, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1308417829}
-  m_RootOrder: 2
+  m_Father: {fileID: 1251701451}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1682973645
 GameObject:

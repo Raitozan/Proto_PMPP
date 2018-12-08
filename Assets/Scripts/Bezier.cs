@@ -5,10 +5,10 @@ using UnityEngine;
 public class Bezier : MonoBehaviour {
 
     public LineRenderer lineRenderer;
-    public Transform pOrigine;
-    public Transform p1;
-    public Transform p2;
-    public Transform pFin;
+    public Transform player1;
+    public Transform deformP1;
+    public Transform deformP2;
+    public Transform player2;
     
     static private int numberPoints = 50;
     private Vector3[] positions = new Vector3[numberPoints+1];
@@ -29,7 +29,7 @@ public class Bezier : MonoBehaviour {
         for (int i = 0; i < positions.Length; i++)
         {
             float t = i / (float)numberPoints;
-            positions[i] = CalculateCubicBezierPoint(t, pOrigine.position, p1.position, p2.position, pFin.position);
+            positions[i] = CalculateCubicBezierPoint(t, player1.position, deformP1.position, deformP2.position, player2.position);
         }
         lineRenderer.SetPositions(positions);
     }
