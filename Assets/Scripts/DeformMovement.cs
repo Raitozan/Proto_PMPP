@@ -24,7 +24,18 @@ public class DeformMovement : MonoBehaviour {
 		transform.position = p1 + (p2 - p1) / 2;
 		transform.LookAt(p1);
 
-		deformPoint1.position = Vector3.Lerp(minDeform.position, maxDeform.position, (Input.GetAxis("DeformPlayer1") + 1) / 2);
-		deformPoint2.position = Vector3.Lerp(minDeform.position, maxDeform.position, (Input.GetAxis("DeformPlayer2") + 1) / 2);
+		Vector3 player1DeformDir = new Vector3(Input.GetAxis("DeformPlayer1X"), 0.0f, Input.GetAxis("DeformPlayer1Z"));
+		Vector3 player2DeformDir = new Vector3(Input.GetAxis("DeformPlayer2X"), 0.0f, Input.GetAxis("DeformPlayer2Z"));
+
+		Vector3 player1DeformAxis = maxDeform.position - transform.position;
+		player1DeformAxis = player1DeformAxis.normalized;
+		Vector3 player2DeformAxis = maxDeform.position - transform.position;
+		player2DeformAxis = player2DeformAxis.normalized;
+
+		float player1DeformAmount = Vector3.Dot(player1DeformAxis, player1DeformDir);
+		float player2DeformAmount = Vector3.Dot(player2DeformAxis, player2DeformDir);
+
+		deformPoint1.position = Vector3.Lerp(minDeform.position, maxDeform.position, (player1DeformAmount + 1) / 2);
+		deformPoint2.position = Vector3.Lerp(minDeform.position, maxDeform.position, (player2DeformAmount + 1) / 2);
 	}
 }
