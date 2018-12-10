@@ -4,19 +4,28 @@ using UnityEngine;
 
 public class MovementSphere : MonoBehaviour {
 
-    public LineRenderer link;
-    public GameObject player1, player2;
+	public LineRenderer link;
+	public GameObject player1, player2;
 
-	int currentOld = 0;
-	int current = 1;
+	[HideInInspector]
+	public int currentOld = 0;
+	[HideInInspector]
+	public int current = 1;
 
-    public float speed;
+	public float speed;
 	public float damage;
 
 	float startTime;
 
-    float waypointRadius = 0.5f;
-    bool toP1 = false;
+	float waypointRadius = 0.5f;
+	[HideInInspector]
+	public bool toP1 = false;
+
+	public Material cannotBeHit;
+	public Material canBeHit;
+
+	[HideInInspector]
+	public bool swap;
 
     // Use this for initialization
     void Start () {
@@ -28,6 +37,15 @@ public class MovementSphere : MonoBehaviour {
         Vector3[] positions = new Vector3[link.positionCount];
         link.GetPositions(positions);
 
+		if (swap)
+		{
+			int tmp = current;
+			current = currentOld;
+			currentOld = tmp;
+			toP1 = !toP1;
+			swap = false;
+		}
+
         if (Vector3.Distance(positions[current], transform.position) < waypointRadius)
         {
             if (toP1 == false)
@@ -36,9 +54,7 @@ public class MovementSphere : MonoBehaviour {
                 current++;
 				startTime = Time.time;
                 if (current >= positions.Length-1)
-                {
-                    toP1 = true;
-                }
+                    swap = true;
             }
             if (toP1 == true)
 			{
@@ -46,9 +62,7 @@ public class MovementSphere : MonoBehaviour {
 				current--;
 				startTime = Time.time;
 				if (current <= 0)
-                {
-                    toP1 = false;
-                }
+					swap = true;
             }
 
         }
@@ -63,9 +77,14 @@ public class MovementSphere : MonoBehaviour {
 	private void OnTriggerEnter(Collider other)
 	{
 		if (other.CompareTag("Wall"))
-			toP1 = !toP1;
+			swap = true;
 		else if (other.CompareTag("Player"))
-			GameManager.instance.playersHealth -= damage/4;
+		{
+			swap = true;
+			other.GetComponentInChildren<BallHitter>().canHitBall = false;
+			GetComponent<MeshRenderer>().material = cannotBeHit;
+			GameManager.instance.playersHealth -= damage / 4;
+		}
 		else if (other.CompareTag("Enemy"))
 			other.GetComponent<EnemyBehavior>().health -= damage;
 	}

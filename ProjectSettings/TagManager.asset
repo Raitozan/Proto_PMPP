@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Wall
   - CrossableWall
+  - Ball
   layers:
   - Default
   - TransparentFX

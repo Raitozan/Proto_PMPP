@@ -16,6 +16,11 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		Move();
+	}
+
+	public void Move()
+	{
 		float x, z;
 		if (player1)
 		{
