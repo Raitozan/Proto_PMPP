@@ -57,4 +57,11 @@ public class MovementSphere : MonoBehaviour {
         transform.position = Vector3.Lerp(positions[currentOld], positions[current], progress);
 
     }
+
+
+	private void OnTriggerEnter(Collider other)
+	{
+		if (other.CompareTag("Wall"))
+			toP1 = !toP1;
+	}
 }
