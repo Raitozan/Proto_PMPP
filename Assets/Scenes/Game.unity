@@ -477,7 +477,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e26443fe7de419744a68ea3400aa7538, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnnemyDamage: 10
+  EnemyDamage: 0
   attackCooldown: 2
 --- !u!1 &188132126
 GameObject:
@@ -526,7 +526,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e26443fe7de419744a68ea3400aa7538, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnnemyDamage: 10
+  EnemyDamage: 0
   attackCooldown: 2
 --- !u!1 &243982616
 GameObject:
@@ -664,7 +664,7 @@ GameObject:
   m_Component:
   - component: {fileID: 564261588}
   m_Layer: 0
-  m_Name: Ennemies
+  m_Name: Enemies
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -726,7 +726,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1048608312837644, guid: 03a06f55f70b79c48ad5298bcd51096b, type: 2}
       propertyPath: m_Name
-      value: Ennemy2
+      value: Enemy2
       objectReference: {fileID: 0}
     - target: {fileID: 114165128512666862, guid: 03a06f55f70b79c48ad5298bcd51096b,
         type: 2}
@@ -760,7 +760,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1048608312837644, guid: 03a06f55f70b79c48ad5298bcd51096b, type: 2}
       propertyPath: m_TagString
-      value: Untagged
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03a06f55f70b79c48ad5298bcd51096b, type: 2}
@@ -2758,7 +2758,7 @@ Prefab:
       objectReference: {fileID: 243982617}
     - target: {fileID: 1048608312837644, guid: 03a06f55f70b79c48ad5298bcd51096b, type: 2}
       propertyPath: m_Name
-      value: Ennemy1
+      value: Enemy1
       objectReference: {fileID: 0}
     - target: {fileID: 23544593715887392, guid: 03a06f55f70b79c48ad5298bcd51096b,
         type: 2}
@@ -2777,7 +2777,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1048608312837644, guid: 03a06f55f70b79c48ad5298bcd51096b, type: 2}
       propertyPath: m_TagString
-      value: Untagged
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03a06f55f70b79c48ad5298bcd51096b, type: 2}
