@@ -6,11 +6,11 @@ public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 6;
     Vector3 velocity;
-    Rigidbody rigidbody;
+    Rigidbody rb;
     // Use this for initialization
     void Start()
     {
-        rigidbody = gameObject.GetComponent<Rigidbody>();
+        rb = gameObject.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -21,6 +21,6 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        rigidbody.MovePosition(rigidbody.position + velocity * Time.deltaTime);
+        rb.MovePosition(rb.position + velocity * Time.deltaTime);
     }
 }

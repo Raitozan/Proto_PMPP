@@ -11,6 +11,7 @@ public class MovementSphere : MonoBehaviour {
 	int current = 1;
 
     public float speed;
+	public float damage;
 
 	float startTime;
 
@@ -63,5 +64,9 @@ public class MovementSphere : MonoBehaviour {
 	{
 		if (other.CompareTag("Wall"))
 			toP1 = !toP1;
+		else if (other.CompareTag("Player"))
+			GameManager.instance.playersHealth -= damage/4;
+		else if (other.CompareTag("Enemy"))
+			other.GetComponent<EnemyBehavior>().health -= damage;
 	}
 }

@@ -6,6 +6,8 @@ using UnityEngine.AI;
 public class EnemyBehavior : MonoBehaviour
 {
 
+	public float health;
+
     /* VARIABLES POUR PATROUILLE*/
     //liste des points de patrouille
     [SerializeField]
@@ -79,16 +81,27 @@ public class EnemyBehavior : MonoBehaviour
             chasing = true;
             Chasing();
         }
+
+		if (health <= 0.0f)
+			Destroy(gameObject);
     }
 
-    //fonciton de chasse
+    //fonction de chasse
     void Chasing()
     {
         if (chasing == true)
         {
             //chasse le premier ennemi en vue
-            _navMesh.SetDestination(enemyVision.visibleTargets[0].position);
-            chaseTimer += Time.deltaTime;
+			if(enemyVision.visibleTargets.Count > 1)
+			{
+				if (Vector3.Distance(transform.position, enemyVision.visibleTargets[0].position) <= Vector3.Distance(transform.position, enemyVision.visibleTargets[1].position))
+					_navMesh.SetDestination(enemyVision.visibleTargets[0].position);
+				else
+					_navMesh.SetDestination(enemyVision.visibleTargets[1].position);
+			}
+			else
+				_navMesh.SetDestination(enemyVision.visibleTargets[0].position);
+			chaseTimer += Time.deltaTime;
             if (chaseTimer >= chaseTime)
             {
                 chaseTimer = 0f;

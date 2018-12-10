@@ -39,7 +39,7 @@ public class EnemyAttack : MonoBehaviour {
     void Attack()
     {
         attackTimer = attackCooldown;
-        //GameManager.instance.health -= EnnemyDamage;
+        GameManager.instance.playersHealth -= EnemyDamage;
     }
 
 }
