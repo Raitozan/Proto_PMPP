@@ -1,12 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.AI;
 
 public class EnemyBehavior : MonoBehaviour
 {
 
+	public float maxHealth;
+	[HideInInspector]
 	public float health;
+	public Canvas healthBar;
+	public Transform camera;
+	public Image bar;
 
     /* VARIABLES POUR PATROUILLE*/
     //liste des points de patrouille
@@ -44,6 +50,7 @@ public class EnemyBehavior : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+		health = maxHealth;
         //reference au champ de vision de l'ennemi pour acceder au tableau qui contient les joueurs visibles.
         enemyVision = gameObject.GetComponent<EnemyFieldOfView>();
 
@@ -71,6 +78,8 @@ public class EnemyBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+		UpdateHealthBar();
+
         //si on a vu au moins un ennemi ou non
         if (enemyVision.visibleTargets.Count == 0)
         {
@@ -162,4 +171,9 @@ public class EnemyBehavior : MonoBehaviour
         }
     }
 
+	void UpdateHealthBar()
+	{
+		healthBar.transform.LookAt(camera.position);
+		bar.fillAmount = health / maxHealth;
+	}
 }

@@ -15,7 +15,10 @@ public class BallHitter : MonoBehaviour {
 
 	public void HitBall()
 	{
-		if (GetComponentInParent<Player>().player1 && Input.GetKeyDown(KeyCode.Space) || !GetComponentInParent<Player>().player1 && Input.GetKeyDown(KeyCode.Keypad0))
+		if (GetComponentInParent<Player>().player1 && Input.GetKeyDown(KeyCode.Space) ||
+			GetComponentInParent<Player>().player1 && Input.GetAxis("HitBallP1") >= 0.75f ||
+			!GetComponentInParent<Player>().player1 && Input.GetKeyDown(KeyCode.Keypad0) ||
+			!GetComponentInParent<Player>().player1 && Input.GetAxis("HitBallP2") >= 0.75f)
 		{
 			if (!ms.swap)
 			{
