@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnnemyBehavior : MonoBehaviour
+public class EnemyBehavior : MonoBehaviour
 {
 
     /* VARIABLES POUR PATROUILLE*/
@@ -36,14 +36,14 @@ public class EnnemyBehavior : MonoBehaviour
     bool chasing;
 
     //pour récupere le fieldOfView de l'ennemi
-    EnnemyFieldOfView ennemyVision;
+    EnemyFieldOfView enemyVision;
 
 
     // Use this for initialization
     void Start()
     {
         //reference au champ de vision de l'ennemi pour acceder au tableau qui contient les joueurs visibles.
-        ennemyVision = gameObject.GetComponent<EnnemyFieldOfView>();
+        enemyVision = gameObject.GetComponent<EnemyFieldOfView>();
 
         //reference au navMesh du GO.
         _navMesh = this.GetComponent<NavMeshAgent>();
@@ -70,11 +70,11 @@ public class EnnemyBehavior : MonoBehaviour
     void Update()
     {
         //si on a vu au moins un ennemi ou non
-        if (ennemyVision.visibleTargets.Count == 0)
+        if (enemyVision.visibleTargets.Count == 0)
         {
             Patroling();
         }
-        else if (ennemyVision.visibleTargets.Count > 0)
+        else if (enemyVision.visibleTargets.Count > 0)
         {
             chasing = true;
             Chasing();
@@ -87,7 +87,7 @@ public class EnnemyBehavior : MonoBehaviour
         if (chasing == true)
         {
             //chasse le premier ennemi en vue
-            _navMesh.SetDestination(ennemyVision.visibleTargets[0].position);
+            _navMesh.SetDestination(enemyVision.visibleTargets[0].position);
             chaseTimer += Time.deltaTime;
             if (chaseTimer >= chaseTime)
             {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnnemyFieldOfView : MonoBehaviour
+public class EnemyFieldOfView : MonoBehaviour
 {
 
     /*VARIABLES POUR CHAMP DE VISION ET ATTAQUE*/
