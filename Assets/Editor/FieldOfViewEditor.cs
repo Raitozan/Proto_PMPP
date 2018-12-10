@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(EnnemyFieldOfView))]
+[CustomEditor(typeof(EnemyFieldOfView))]
 public class FieldOfViewEditor : Editor
 {
     //pour la visualisation de la vision de l'ennemi
     void OnSceneGUI()
     {
         //reference au Composant qui gere la vision de l'ennemi
-        EnnemyFieldOfView fieldOfView = (EnnemyFieldOfView)target;
+        EnemyFieldOfView fieldOfView = (EnemyFieldOfView)target;
         //couleur du tracage
         Handles.color = Color.white;
         //trace le cercle qui représente la distance max du champ de vision de l'ennemi
